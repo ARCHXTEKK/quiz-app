@@ -13,7 +13,7 @@ function App() {
   const [answered, setAnswered] = useState(0);
   const [passed, setPassed] = useState(0);
 
-  const handleAnwseredIncrementOnClick = (event) => {
+  const handleAnwseredIncrementOnMouseUp = (event) => {
     if(QUESTIONS[answered].answer == event.target.value) {
       setPassed(passed + 1);
     }
@@ -26,18 +26,22 @@ function App() {
   return (
     <div className="App">
       {finished ? 
-      <div className='finish'>
-        Congratulations! You finished a quiz with score: {passed}
+      <div className='main main-finish'>
+        <div className='main-finish__message'>Congratulations! <br/>You finished a quiz with score: {passed} </div>
       </div> 
       :
-      <div className='quiz'> 
+      <div className='main'> 
         <div className='question'>
-          <div className='question__counter'>{answered + 1}<b>/</b>{QUESTIONS.length}</div>
+          <div className='counter'>
+            <span className='counter__current'>{answered + 1}</span>
+            <span className='counter__slash'> / </span>
+            <span className='counter__total'>{QUESTIONS.length}</span>
+            </div>
           <div className='question__text'>{QUESTIONS[answered].text}</div>
         </div>
-        <div className='answer'> 
+        <div className='anwser'> 
           {QUESTIONS[answered].options.map((el, index) => {
-            return <button className='answer__option' id={`anwser-${index}`} value={index + 1} onClick={handleAnwseredIncrementOnClick}>{el}</button>
+            return <button className='btn anwser__btn' id={`anwser-${index}`} value={index + 1} onClick={handleAnwseredIncrementOnMouseUp}>{el}</button>
           })}
         </div>
       </div>

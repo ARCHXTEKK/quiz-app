@@ -1,0 +1,68 @@
+$main_color: #2c2c44
+$primary_color: #524d6a
+$bright_color: #eee7da
+$contrast_color: #dbeaf2
+
+@mixin Text($color: $contrast_color, $fz: 14, $fw: 400, $ff: "Montserrat", $ff2: sans-serif)
+    font-size: $fz
+    font-weight: $fw
+    font-family: $ff, $ff2
+    color: $color
+
+body
+    background-color: $bright_color
+    @include Text()
+
+.main
+    background-color: $main_color
+    padding: 30px
+    border-radius: 30px
+    width: 100%
+    height: 100%
+    max-width: 500px
+    max-height: 220px   
+    display: flex
+    justify-content: space-between
+    margin: 25vh auto
+    box-shadow: -18px 18px 18px rgba(0,0,0,0.25)
+
+.main-finish
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 220px
+
+.main-finish__message
+    @include Text($fz: 18px)
+    text-align: center
+.btn
+    background-color: $main_color
+    border: $primary_color 2px solid
+    height: 50px
+    width: 100px
+    border-radius: 30px
+    @include Text()
+    transition: all .3s ease
+    &:hover
+        background-color: $primary_color
+        transform: scale(1.05)
+    &:active 
+        background-color: $bright_color
+        transform: scale(0.95)
+        color: $main_color
+.anwser
+    display: flex
+    flex-direction: column
+
+.anwser__btn
+    margin-right: 5px
+    margin-top: 5px
+
+.counter__current
+    font-size: 24px
+
+.counter__total
+    font-size: 14px
+
+.counter__slash
+    font-weight: 700
